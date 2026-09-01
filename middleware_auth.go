@@ -9,7 +9,7 @@ import (
 
 type authedHandler func(http.ResponseWriter, *http.Request, database.User)
 
-func (cfg *apiConfig) middlewareAuth(handler authedHandler) http.HandlerFunc{
+func (cfg *apiConfig) middlewareAuth(handler authedHandler) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		apiKey, err := auth.GetAPIKey(r.Header)
 		if err != nil {
@@ -18,7 +18,7 @@ func (cfg *apiConfig) middlewareAuth(handler authedHandler) http.HandlerFunc{
 		}
 
 		user, err := cfg.DB.GetUser(r.Context(), apiKey)
-		if err != nil{
+		if err != nil {
 			respondWithError(w, http.StatusNotFound, "Couldn't get user", err)
 			return
 		}

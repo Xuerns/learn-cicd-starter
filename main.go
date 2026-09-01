@@ -24,7 +24,7 @@ type apiConfig struct {
 //go:embed static/*
 var staticFiles embed.FS
 
-func main(){
+func main() {
 	err := godotenv.Load(".env")
 	if err != nil {
 		log.Printf("warning: assuming default configuration. .env unreadable: %v", err)
@@ -64,7 +64,7 @@ func main(){
 		MaxAge:           300,
 	}))
 
-	router.Get("/", func(w http.ResponseWriter, r *http.Request){
+	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		f, err := staticFiles.Open("static/index.html")
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -78,7 +78,7 @@ func main(){
 
 	v1Router := chi.NewRouter()
 
-	if apiCfg.DB != nil{
+	if apiCfg.DB != nil {
 		v1Router.Post("/users", apiCfg.handlerUsersCreate)
 		v1Router.Get("/users", apiCfg.middlewareAuth(apiCfg.handlerUsersGet))
 		v1Router.Get("/notes", apiCfg.middlewareAuth(apiCfg.handlerNotesGet))
