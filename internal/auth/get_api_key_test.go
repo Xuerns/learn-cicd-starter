@@ -7,7 +7,7 @@ import (
 
 func TestGetAPIKey(test *testing.T) {
 	header := http.Header{}
-	header.Set("Authorization", "ApiKeyws cdsojncojsdnojcndsojcodsjkcsdkldjkvpkwkcznvojsncjfnnw0-31u29y8943932=2584935894389543-54893589347584389")
+	header.Set("Authorization", "ApiKey cdsojncojsdnojcndsojcodsjkcsdkldjkvpkwkcznvojsncjfnnw0-31u29y8943932=2584935894389543-54893589347584389")
 
 	_, err := GetAPIKey(header)
 
