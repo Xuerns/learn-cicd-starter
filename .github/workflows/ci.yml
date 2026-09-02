@@ -38,6 +38,6 @@ jobs:
         run: test -z "$(go fmt ./...)"
 
       - name: linting
-        uses: dominikg/staticcheck-action@v1
+        uses: dominikh/staticcheck-action@v1
         with:
           version: "latest"
