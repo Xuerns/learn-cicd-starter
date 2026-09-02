@@ -18,11 +18,11 @@ jobs:
         with:
           go-version: "1.26.0"
 
-      - name: Force Failure
+      - name: Test code
         run: go test -cover ./...
     
   style:
-    name: style
+    name: Style
     runs-on: ubuntu-latest
 
     steps:
@@ -36,3 +36,8 @@ jobs:
       
       - name: Formating code
         run: test -z "$(go fmt ./...)"
+
+      - name: linting
+        uses: dominikh/staticcheck-action@v1
+        with:
+          version: "latest"
