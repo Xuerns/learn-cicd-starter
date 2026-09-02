@@ -36,3 +36,8 @@ jobs:
       
       - name: Formating code
         run: test -z "$(go fmt ./...)"
+
+      - name: linting
+        uses: dominikg/staticcheck-action@v1
+        with:
+          version: "latest"
